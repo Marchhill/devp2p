@@ -273,7 +273,8 @@ single item called the 'block body'.
     proofs = B
 
 `proofs` contains the `stark_proof` bytes defined by [EIP-8288]. It must be present in
-block bodies after that fork, and absent for earlier blocks.
+block bodies after that fork, and absent for earlier blocks. This applies to the
+[BlockBodies] and [NewBlock] messages of every protocol version from eth/68 onwards.
 
 For the purpose of block propagation (now defunct), full blocks were relayed as a combined item:
 
@@ -711,7 +712,8 @@ In-mempool signature and proof aggregation was added by [EIP-8288], which change
 definition of block headers to include `stark-proof-hash` and `block-deps-hash`, and block
 bodies to include `proofs` after `withdrawals`. No new wire protocol version was
 created for this change, since it was only a backwards-compatible addition to the block
-validity rules.
+validity rules. `proofs` is carried by the [BlockBodies] and [NewBlock] messages
+of eth/68 and all later versions.
 
 ### eth/72 ([EIP-8070], July 2026)
 
